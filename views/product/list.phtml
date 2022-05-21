@@ -1,7 +1,31 @@
 <table class="table table-hover table-striped">
+  <thead>
+
     <tr class="table-dark">
-        <th>#ID</th>
-        <th>Nome</th>
-        <th>AlgumaCoisa</th>
+      <th>#ID</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Ações</th>
     </tr>
+  </thead>
+  <tbody class="table-light">
+    <?php
+      foreach ($data  as $prod) {
+        $id = $prod->getId();
+
+        echo "
+        <tr>
+          <td>{$id}</td>
+          <td>{$prod->getName()}</td>
+          <td>{$prod->getDescription()}</td>
+          <td>
+            <a href='' class='btn btn-warning btn-sm'>Editar</a>
+            <a href='/produtos/excluir?id={$id}' class='btn btn-danger btn-sm'>Excluir</a>
+          </td>
+        </tr>
+        ";
+      }
+
+     ?>
+  </tbody>
 </table>

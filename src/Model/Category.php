@@ -6,31 +6,19 @@ namespace App\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- */
+#[ORM\Entity]
 class Category
 {
-  /**
-   * @ORM\Id @ORM\GeneratedValue
-   * @ORM\Column(type="integer")
-   */
+  #[ORM\Id]
+  #[ORM\GeneratedValue]
+  #[ORM\Column(type: 'integer')]
   private int $id;
 
-  /**
-   * @ORM\Column(length=100)
-   */
+  #[ORM\Column(length: 50)]
   private string $name;
 
-  /**
-   * @ORM\Column()
-   */
+  #[ORM\Column]
   private string $description;
-
-  public function __construct(string $name)
-  {
-    $this->name = $name;
-  }
 
   public function getId(): int
   {

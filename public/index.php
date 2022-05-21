@@ -10,13 +10,14 @@ use App\Controller\ErrorController;
 use App\Controller\IndexController;
 use App\Controller\UserController;
 
-$url = $_SERVER['REQUEST_URI'];
+$url = explode('?', $_SERVER['REQUEST_URI'])[0];
 
 match($url) {
     '/' => (new IndexController)->home(),
     '/categorias' => (new CategoryController())->list(),
     '/categorias/pdf' => (new CategoryController())->pdf(),
     '/listar-produtos' => (new ProductController())->list(),
+    '/produtos/excluir' => (new ProductController())->remove(),
     '/listar-usuarios' => (new UserController)->list(),
     '/novo-categoria' => (new CategoryController())->add(),
     '/novo-produto' => (new ProductController())->add(),

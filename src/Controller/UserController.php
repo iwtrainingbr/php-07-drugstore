@@ -4,15 +4,24 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Connection\Connection;
+use App\Model\User;
+
 class UserController extends AbstractController
 {
     public function add(): void
     {
         parent::render('/user/add');
-    }   
+    }
 
     public function list(): void
     {
-        parent::render('/user/list');
+        $con = Connection::open();
+
+        // $repository = $con->getRepository(User::class);
+        // $data = $repository->findAll();
+        $data = $con->getRepository(User::class)->findAll();
+
+        parent::render('/user/list', $data);
     }
 }
