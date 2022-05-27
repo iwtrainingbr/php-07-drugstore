@@ -21,6 +21,6 @@ match($url) {
     '/listar-usuarios' => (new UserController)->list(),
     '/novo-categoria' => (new CategoryController())->add(),
     '/novo-produto' => (new ProductController())->add(),
-    '/novo-usuario' => (new UserController())->add(),
+    '/usuarios/novo' => (new UserController())->add(),
     default => (new ErrorController())->notFound(),
 };
