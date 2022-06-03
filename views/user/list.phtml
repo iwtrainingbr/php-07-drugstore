@@ -11,7 +11,6 @@
       <th>#ID</th>
       <th>Nome</th>
       <th>Email</th>
-      <th>Senha</th>
       <th>Status</th>
       <th>Ações</th>
     </tr>
@@ -19,14 +18,29 @@
   <tbody class="table-light">
     <?php
       foreach($data as $user) {
+        $id = $user->getId();
+        
+        $status = '<span class="badge bg-danger">Inativo</span>';
+        $btnStatus = '<a class="btn btn-sm btn-success" href="/usuarios/ativar?id='.$id.'">Ativar</a>';
+
+        if ($user->getStatus() === true) {
+          $status = '<span class="badge bg-success">Ativo</span>';
+          $btnStatus = '<a class="btn btn-sm btn-outline-danger" href="/usuarios/desativar?id='.$id.'">Desativar</a>';
+        }
+
+
+
         echo "
           <tr>
             <td>{$user->getId()}</td>
             <td>{$user->getName()}</td>
             <td>{$user->getEmail()}</td>
-            <td>{$user->getPassword()}</td>
-            <td>{$user->getStatus()}</td>
-            <td>---</td>
+            <td>{$status}</td>
+            <td>
+              <a href='' class='btn btn-sm btn-warning'>Editar</a>
+              <a href='' class='btn btn-sm btn-danger'>Excluir</a>
+              {$btnStatus}
+            </td>
           </tr>
         ";
       }

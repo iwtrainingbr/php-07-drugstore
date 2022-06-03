@@ -22,5 +22,7 @@ match($url) {
     '/novo-categoria' => (new CategoryController())->add(),
     '/novo-produto' => (new ProductController())->add(),
     '/usuarios/novo' => (new UserController())->add(),
+    '/usuarios/ativar' => (new UserController())->enable(),
+    '/usuarios/desativar' => (new UserController())->disable(),
     default => (new ErrorController())->notFound(),
 };
