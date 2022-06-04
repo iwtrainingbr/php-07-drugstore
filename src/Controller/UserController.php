@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Connection\Connection;
 use App\Model\User;
+use App\Security\UserSecurity;
 
 class UserController extends AbstractController
 {
@@ -34,6 +35,10 @@ class UserController extends AbstractController
 
     public function list(): void
     {
+        // if (null === UserSecurity::getUser()) {
+        //   die('Sem permissao');
+        // }
+
         $con = Connection::open();
 
         // $repository = $con->getRepository(User::class);

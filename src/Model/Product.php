@@ -12,13 +12,13 @@ class Product
   #[ORM\Id]
   #[ORM\GeneratedValue]
   #[ORM\Column(type: 'integer')]
-  private int $id;
+  public int $id;
 
   #[ORM\Column(length: 50)]
-  private string $name;
+  public string $name;
 
   #[ORM\Column]
-  private string $description;
+  public string $description;
 
   public function getId(): int
   {

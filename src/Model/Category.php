@@ -20,6 +20,11 @@ class Category
   #[ORM\Column]
   private string $description;
 
+  public function __construct(string $name)
+  {
+    $this->name = $name;
+  }
+
   public function getId(): int
   {
     return $this->id;
